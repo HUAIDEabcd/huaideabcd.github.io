@@ -10236,7 +10236,7 @@ DocumentFragment —— 11
 
 `dom 结构树代表的是一系列继承关系`
 
-![DOM结构树](https://cdn.jsdelivr.net/gh/haodex/noteImage@master/202111120958101.png)
+![DOM结构树](https://cdn.jsdelivr.net/gh/Luckiiest/noteImage@master/202111120958101.png)
 
 ```js
 `Document 和 document的关系`

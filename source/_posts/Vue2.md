@@ -100,7 +100,7 @@ const vDom = {
     - M：Model
     - V：View
     - VM：ViewModel
-  - ![image-20220211104817260](https://cdn.jsdelivr.net/gh/haodex/noteImage@master/202202111048740.png)
+  - ![image-20220211104817260](https://cdn.jsdelivr.net/gh/Luckiiest/noteImage@master/202202111048740.png)
 
 ## 创建一个Vue实例
 
@@ -1269,7 +1269,7 @@ vm.$mount("#app");
 
 ### render
 
-使用`vue`时，刚开始会进行初始化，初始化完成之后会检查有没有`el`元素，如果有`el`时，会检查有没有`template`模板，如果有，那么会进行`template`操作，如果没有`el`时，会判断是否调用`$mount`方法，如果两个都没有实例就会结束，如果有`$mount`则会检查`template`是否存在，如果存在则会进行`template`操作，如果没有`template`，那么会找到挂载的元素，然后拿到挂载元素的`outerHTML`，然后把`outerHTML`作为一个模板进行一系列的处理![image-20220217151145881](https://cdn.jsdelivr.net/gh/haodex/noteImage@master/202202171511088.png)
+使用`vue`时，刚开始会进行初始化，初始化完成之后会检查有没有`el`元素，如果有`el`时，会检查有没有`template`模板，如果有，那么会进行`template`操作，如果没有`el`时，会判断是否调用`$mount`方法，如果两个都没有实例就会结束，如果有`$mount`则会检查`template`是否存在，如果存在则会进行`template`操作，如果没有`template`，那么会找到挂载的元素，然后拿到挂载元素的`outerHTML`，然后把`outerHTML`作为一个模板进行一系列的处理![image-20220217151145881](https://cdn.jsdelivr.net/gh/Luckiiest/noteImage@master/202202171511088.png)
 
 ```js
 const vm = new Vue({
@@ -1317,7 +1317,7 @@ const vm = new Vue({
 
 ### Vue生命周期
 
-![Vue 实例生命周期](https://cdn.jsdelivr.net/gh/haodex/noteImage@master/202202171540126.png)
+![Vue 实例生命周期](https://cdn.jsdelivr.net/gh/Luckiiest/noteImage@master/202202171540126.png)
 
 ```js
 const vm = new Vue({
@@ -1516,7 +1516,7 @@ new Vue({
 
 一些应用程序的UI是由多层组件嵌套组成的，这种情况下，
 
-![image-20220220190014773](https://cdn.jsdelivr.net/gh/haodex/noteImage@master/202202201900277.png)
+![image-20220220190014773](https://cdn.jsdelivr.net/gh/Luckiiest/noteImage@master/202202201900277.png)
 
 通过`vue-Router`可以使用嵌套路由来表达这种嵌套关系
 
