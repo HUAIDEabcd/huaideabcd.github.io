@@ -334,6 +334,11 @@ server.on('connection', function (socket) {
   // 当浏览器访问时返回Http报文
   socket.on('data', function (data) {
     console.log(data.toString())
+    // 获取响应报文的url，进行split分割
+    var request = data.toString().split('\r\n')
+    // 获取数组中第一位进行分割获取url页面地址
+    var url = request[0].split(' ')[1]
+    console.log(url)
    	// 获取Http报文后，可以进行返回响应报文
     socket.write(`HTTP 200OK\r\n
     			  Content-type:text/html\r\n
@@ -345,4 +350,91 @@ server.on('connection', function (socket) {
 // 浏览器端输入127.0.0.1:12306/abc
 // 后面的abc是为了查看报文可以进行交互
 ```
+
+### fs
+
+> `fs` 模块支持以标准 POSIX 函数建模的方式与文件系统进行交互。
+
+#### 写入文件
+
+- fs.writeFileSync
+  - 同步
+
+```js
+import fs from "fs";
+
+try {
+   fs.writeFileSync('message.txt',data) 
+} catch(e) {
+    throw e;
+}
+```
+
+- fs.writeFile
+  - 异步
+
+```js
+import fs from 'fs';
+
+fs.writeFile('message.txt', data, (err,data) => {
+  if (err) throw err;
+  console.log(data);
+});
+```
+
+- fs.appendFile
+  - 可读可写
+
+```js
+import fs from 'fs';
+
+fs.appendFile(fileName, data + '\n', { flag: 'a' }, function (err,data) {
+    if(err) throw err;
+    console.log(data)
+})
+```
+
+#### fs.open
+
+> 打开文件
+
+```js
+/**
+ * [open 打开文件]
+ * path      [path 文件路径]
+ * flags     [flags 文件打开行为]
+ * mode      [mode 设置文件模式(权限)，文件创建默认权限为 0666(可读，可写)。]
+ * callback  [callback 回调函数]
+ */
+fs.open(path, flags[, mode], callback)
+```
+
+- flags参数为以下值
+
+| Flag | 描述                                           | 可读 | 可写 | 可创建 | 可追加 |
+| :--- | :--------------------------------------------- | :--: | :--: | :----: | :----: |
+| r    | 以读取模式打开文件，如果文件不存在则抛出异常   |  √   |      |        |        |
+| r+   | 以读写模式打开文件，如果文件不存在则抛出异常   |  √   |  √   |        |        |
+| rs   | 以同步的方式读取文件                           |  √   |      |        |        |
+| rs+  | 以同步方式读取和写入文件                       |  √   |  √   |        |        |
+| w    | 以写入模式打开文件，如果文件不存在则创建       |      |  √   |   √    |        |
+| wx   | 类似'w'，但是如果文件路径存在，则文件写入失败  |      |  √   |   √    |        |
+| w+   | 以读写模式打开文件，如果文件不存在则创建       |  √   |  √   |   √    |        |
+| wx+  | 类似'w+'，如果文件路径存在，则写入失败         |  √   |  √   |        |        |
+| a    | 以追加模式打开文件，如果文件不存在则创建       |      |  √   |   √    |   √    |
+| ax   | 类似'a',但如果文件路径存在，则文件追加失败     |      |  √   |   √    |   √    |
+| a+   | 以读取追加模式打开文件，如果文件不存在则创建   |  √   |  √   |   √    |   √    |
+| ax+  | 类似'a+'，如果文件路径存在，则文件读取追加失败 |  √   |  √   |   √    |   √    |
+
+```js
+var fs = require('fs')
+
+//异步打开文件
+fs.open("message.txt","r+",function(err,fd) {
+    if(err) throw err
+    console.log("打开成功")
+})
+```
+
+
 
