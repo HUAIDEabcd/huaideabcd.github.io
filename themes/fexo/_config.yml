@@ -2,7 +2,7 @@
 blog_name: Luckiiest Blog
 slogan: 人生如逆旅，我亦是行人
 # slogan: Choose a gesture to allow yourself to live irreplaceable
-url: http://blog.poetries.top
+url: https://github.com/Luckiiest
 
 # Set avatar (Absolute url and relative url)
 avatar: /images/avatar.jpg
@@ -108,7 +108,7 @@ backtop:
 donation:
   show: true
   btn_text: 支持一下
-  tip: 扫一扫，支持Luckiiest
+  tip: 扫一扫，支持一下Luckiiest
   items:
     - type: 微信
       text: 微信扫一扫

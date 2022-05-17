@@ -4,7 +4,7 @@ date: 2022-02-09 16:48:33
 tags:
   - Vue
 categories:
-  - 框架
+  - Vue
 ---
 
 # Vue
@@ -744,7 +744,7 @@ Vue提供了大多数常用的按键码的别名
 </script>
 ```
 
-## 组件
+## 组件And插槽
 
 >  组件就是可复用的实例
 
@@ -1221,7 +1221,7 @@ Vue.component("base-input",{
 </keep-alive>
 ```
 
-## 小知识点
+## 生命周期And挂载元素方式
 
 ### 挂载元素方式
 
