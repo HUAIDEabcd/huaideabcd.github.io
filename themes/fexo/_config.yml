@@ -36,18 +36,18 @@ home_nav:
   #- name: Browser
   #url: http://blog.poetries.top/browser-working-principle
   #target_blank: true
-  - name: Node学习指南
-    url: http://blog.poetries.top/node-learning-notes
-    target_blank: true
-  - name: Interview
-    url: http://interview.poetries.top
-    target_blank: true
+  # - name: Node学习指南
+  #   url: http://blog.poetries.top/node-learning-notes
+  #   target_blank: true
+  # - name: Interview
+  #   url: http://interview.poetries.top
+  #   target_blank: true
   #- name: TS
   #url: http://blog.poetries.top/ts-axios
   #target_blank: true
-  - name: Css
-    url: http://blog.poetries.top/css-reference
-    target_blank: true
+  # - name: Css
+  #   url: http://blog.poetries.top/css-reference
+  #   target_blank: true
 
 # config page nav
 page_nav:
