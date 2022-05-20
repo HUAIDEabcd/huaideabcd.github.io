@@ -1,5 +1,5 @@
 ---
-title: Vue3新特性
+title: Vue3组合API
 date: 2022-05-17 08:07:41
 tags:
   - Vue3
@@ -9,7 +9,7 @@ categories:
 
 <!--more-->
 
-# Vue3 新特性
+# Vue3 组合API
 
 ## 使用 vite 构建 Vue
 
@@ -317,5 +317,7 @@ export default {
 </script>
 ```
 
-## 路由
+## 
+
+
 
