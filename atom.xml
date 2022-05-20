@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>huaideabcd Blog</title>
+  
+  <subtitle>Choose a gesture to allow yourself to live irreplaceable.</subtitle>
+  <link href="https://github.com/huaideabcd/huaideabcd.github.io.git/atom.xml" rel="self"/>
+  
+  <link href="https://github.com/huaideabcd/huaideabcd.github.io.git/"/>
+  <updated>2022-05-20T13:49:25.759Z</updated>
+  <id>https://github.com/huaideabcd/huaideabcd.github.io.git/</id>
+  
+  <author>
+    <name>huaideabcd</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://github.com/huaideabcd/huaideabcd.github.io.git/2022/05/20/test/"/>
+    <id>https://github.com/huaideabcd/huaideabcd.github.io.git/2022/05/20/test/</id>
+    <published>2022-05-20T13:49:25.759Z</published>
+    <updated>2022-05-20T13:49:25.759Z</updated>
+    
+    <content type="html"><![CDATA[<p>测试</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;测试&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
