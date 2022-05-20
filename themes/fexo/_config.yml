@@ -1,18 +1,18 @@
 # Blog info
-blog_name: Luckiiest Blog
-slogan: 人生如逆旅，我亦是行人
+blog_name: huaideabcd Blog
+slogan: 这是我的博客
 # slogan: Choose a gesture to allow yourself to live irreplaceable
-url: https://github.com/Luckiiest
+url: https://github.com/huaideabcd
 
 # Set avatar (Absolute url and relative url)
 avatar: /images/avatar.jpg
-avatar_github_chart: http://ghchart.rshah.org/Luckiiest
+avatar_github_chart: http://ghchart.rshah.org/huaideabcd
 
 # Set favicon
 favicon: /favicon.ico
 
 # For seo
-keywords: haodex,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript
+keywords: huaideabcd,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript
 
 home_nav:
   - name: Blog
@@ -22,7 +22,7 @@ home_nav:
   #url: /project/
   #target_blank: true #在新页面打开
   - name: Github
-    url: https://github.com/Luckiiest
+    url: https://github.com/huaideabcd
     target_blank: true
   # - name: Jianshu
   #   url: http://www.jianshu.com/users/94077fcddfc0/latest_articles
@@ -108,7 +108,7 @@ backtop:
 donation:
   show: true
   btn_text: 支持一下
-  tip: 扫一扫，支持一下Luckiiest
+  tip: 扫一扫，支持一下huaideabcd
   items:
     - type: 微信
       text: 微信扫一扫
@@ -166,12 +166,12 @@ changyan:
 # gitalk评论组件，把下面的配置换成你的，官方文档: https://gitalk.github.io/
 gitalk:
   enable: false # 如果使用 gitalk，请设置改之为true
-  githubID: Luckiiest # 例：asdfv1929
+  githubID: huaideabcd # 例：asdfv1929
   clientID:
   clientSecret:
-  repo: Luckiiest.github.io
-  owner: Luckiiest
-  admin: Luckiiest
+  repo: huaideabcd.github.io
+  owner: huaideabcd
+  admin: huaideabcd
 
 # gitment comment service
 gitment:
@@ -212,13 +212,13 @@ about:
   - type: me
     icon: icon-user
     text_value:
-      - 'Luckiiest，2002.'
+      - 'huaideabcd，2002.'
       - '砥砺前行，不忘初心'
   - type: Github
     icon: icon-github
     text_key: Github
-    text_value: '@Luckiiest'
-    text_value_url: https://github.com/Luckiiest
+    text_value: '@huaideabcd'
+    text_value_url: https://github.com/huaideabcd
   # - type: weibo
   #   icon: icon-weibo
   #   text_key: 微博
