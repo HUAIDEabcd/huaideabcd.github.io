@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>WebPack | huaideabcd Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="WebPack," />
+  
+
+  <meta name="description" content="webpack核心功能webpack的安装和使用安装： 推荐本地安装 安装命令：$ npm i -D webpack webpack-cli 运行webpack命令：$ npx webpack 也可以在package.json文件里的&quot;scripts&quot;里添加&quot;build&quot;:webpack，就可以直接使用命令：$ npm run build来运行webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebPack">
+<meta property="og:url" content="https://github.com/huaideabcd/huaideabcd.github.io.git/2022/05/20/webpack%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:site_name" content="huaideabcd Blog">
+<meta property="og:description" content="webpack核心功能webpack的安装和使用安装： 推荐本地安装 安装命令：$ npm i -D webpack webpack-cli 运行webpack命令：$ npx webpack 也可以在package.json文件里的&quot;scripts&quot;里添加&quot;build&quot;:webpack，就可以直接使用命令：$ npm run build来运行webpack">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293030702-ac748c8c-677d-44c5-b536-dd14b2349af2.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293067061-a8e2c17b-e563-4393-a7ca-10140237655e.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293117094-9c567a58-fb52-4e0b-a948-5fb3b03e29cc.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293148709-8c9a8f4d-4efb-41a6-ba61-818f4d9289d1.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293180988-1d45f19f-7493-4ac6-a6e1-720c0b22ebe1.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293202302-6527e25a-72d3-4d55-9036-87ec9720778a.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293248114-9b93b848-6048-4a66-82a2-af06c6018501.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293265956-e1dc7b95-1e61-4f22-b124-d52c9a93a7cb.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293277352-1e67e31b-7e7c-4f09-86e8-88b9afa58c01.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293578413-7e26d29f-66cc-4cf3-8c31-ff09c994ee3d.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293594615-f5ef999a-32fc-4808-bffa-f78257ab0103.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293618982-97ecb9cc-6ef1-4cb0-a38b-0e7dd3aa2e4a.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294003216-541e627b-6c04-47e5-8fe0-40acb544f129.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294009496-0ffbdec5-48b0-4e42-9eb9-1509dbdf7d1e.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294016813-1184e4ce-7ae0-4942-ad21-c9407f4ba70e.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294022277-841f7914-922e-45eb-ac83-df92fe6ba85f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609333854057-9d86051a-010a-4c0d-9788-b38c7aa463cc.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609333867152-fd53ee1f-91c5-412e-acb1-62f8edfb084f.png">
+<meta property="article:published_time" content="2022-05-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-25T10:37:46.512Z">
+<meta property="article:author" content="huaideabcd">
+<meta property="article:tag" content="WebPack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293030702-ac748c8c-677d-44c5-b536-dd14b2349af2.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+<link href="/css/other.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  <!-- 聊天系统 -->
+  
+    
+   <link type="text/css" rel="stylesheet" href="/renxi/default.css">
+   <style>
+      #modal {
+        position: static !important;
+      }
+      .filter {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #fe5757;
+        animation: colorChange 30s ease-in-out infinite;
+        animation-fill-mode: both;
+        mix-blend-mode: overlay;
+      }
+  
+      @keyframes colorChange {
+        0%, 100% {
+            opacity: 0;
+        }
+        50% {
+            opacity: .9;
+        }
+      }
+   </style>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="huaideabcd Blog" type="application/atom+xml">
+</head>
+
+<body>
+  
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/categories/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tags/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录<i class="iconfont toc-title" style="display:inline-block;color:#87998d;width:20px;height:20px;">&#xf004b;</i></strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD"><span class="toc-text">webpack核心功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">webpack的安装和使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90"><span class="toc-text">编译结果分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">基本配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#devtool%E9%85%8D%E7%BD%AE"><span class="toc-text">devtool配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="toc-text">编译过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A5%E5%8F%A3%E5%92%8C%E5%87%BA%E5%8F%A3"><span class="toc-text">入口和出口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BA%E5%8F%A3%E3%80%81%E5%85%A5%E5%8F%A3%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-text">出口、入口最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loader"><span class="toc-text">loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plugin"><span class="toc-text">plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BA%E5%88%86%E7%8E%AF%E5%A2%83"><span class="toc-text">区分环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82%E9%85%8D%E7%BD%AE"><span class="toc-text">其他细节配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95"><span class="toc-text">常用扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E8%BE%93%E5%87%BA%E7%9B%AE%E5%BD%95"><span class="toc-text">清除输出目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%A1%B5%E9%9D%A2"><span class="toc-text">自动生成页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-text">复制静态资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">开发服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="toc-text">CSS工程化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-text">JS兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">性能优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E5%92%8C%E6%A1%88%E4%BE%8B"><span class="toc-text">补充和案例</span></a></li></ol>
+  </div>
+  
+
+
+
+
+<div class="content content-post CENTER">
+   <!-- canvas 彩带 -->
+<canvas id="evanyou" width="1302" height="678" style="position: fixed;width: 100%;height: 100%;top: 0;left:0;z-index:-1;"></canvas>
+
+<!-- <div class="qrcode_container">
+  <div class="tencent_code">
+    <h4>关注作者公众号</h4> 
+    <p>和万千小伙伴一起学习</p> 
+    <img src="https://poetries1.gitee.io/img-repo/2020/06/qrcode.jpg" alt="">
+  </div> 
+</div> -->
+
+<article id="post-webpack核心功能" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header" style="position:relative;">
+    <h1 class="post-title">WebPack</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.05.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>huaideabcd</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+       
+          <span class="post-count">
+            <i class="fa fa-file-word-o"></i>&nbsp
+            <span>字数统计 5.7k字</span>
+          </span>
+
+          <span class="post-count">
+            <i class="fa fa-columns"></i>&nbsp
+            <span>阅读时长 22分</span>
+          </span>
+      
+      
+    </div>
+
+    <i class="iconfont" id="toc-eye" style="display:inline-block;color:#b36619;position:absolute;top:0;right:0;cursor:pointer;
+    font-size: 24px;">&#xe61c;</i>
+
+  </header>
+
+  <div class="article-content">
+    
+      <div id="container">
+        <h2 id="webpack核心功能"><a href="#webpack核心功能" class="headerlink" title="webpack核心功能"></a>webpack核心功能</h2><h3 id="webpack的安装和使用"><a href="#webpack的安装和使用" class="headerlink" title="webpack的安装和使用"></a>webpack的安装和使用</h3><p>安装：</p>
+<p>推荐本地安装</p>
+<p>安装命令：<code>$ npm i -D webpack webpack-cli</code></p>
+<p>运行webpack命令：<code>$ npx webpack</code></p>
+<p>也可以在package.json文件里的<code>&quot;scripts&quot;</code>里添加<code>&quot;build&quot;:webpack</code>，就可以直接使用命令：<code>$ npm run build</code>来运行webpack。</p>
+<p>如果不告知运行环境，则默认生产环境</p>
+<p><code>$ npx webpack --mode=development</code>   开发环境</p>
+<p><code>$ npx webpack --mode=production</code>      生产环境</p>
+<h3 id="编译结果分析"><a href="#编译结果分析" class="headerlink" title="编译结果分析"></a>编译结果分析</h3><p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//合并两个模块</span><br><span class="line">//  ./src/a.js</span><br><span class="line">//  ./src/index.js</span><br><span class="line"></span><br><span class="line">(function (modules) &#123;</span><br><span class="line">    var moduleExports = &#123;&#125;; //用于缓存模块的导出结果</span><br><span class="line">    //require函数相当于是运行一个模块，得到模块导出结果</span><br><span class="line">    function __webpack_require(moduleId) &#123; //moduleId就是模块的路径</span><br><span class="line">        if (moduleExports[moduleId]) &#123;</span><br><span class="line">            //检查是否有缓存</span><br><span class="line">            return moduleExports[moduleId];</span><br><span class="line">        &#125;</span><br><span class="line">        var func = modules[moduleId]; //得到该模块对应的函数</span><br><span class="line">        var module = &#123;</span><br><span class="line">            exports: &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        func(module, module.exports, __webpack_require); //运行模块</span><br><span class="line">        var result = module.exports; //得到模块导出的结果</span><br><span class="line">        moduleExports[moduleId] = result; //缓存起来</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    //执行入口模块</span><br><span class="line">    return __webpack_require(&quot;./src/index.js&quot;); //require函数相当于是运行一个模块，得到模块导出结果</span><br><span class="line">&#125;)(&#123; //该对象保存了所有的模块，以及模块对应的代码</span><br><span class="line">    &quot;./src/a.js&quot;: function (module, exports) &#123;</span><br><span class="line">        eval(&quot;console.log(\&quot;module a\&quot;)\nmodule.exports = \&quot;a\&quot;;\n //# sourceURL=webpack:///./src/a.js&quot;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;./src/index.js&quot;: function (module, exports, __webpack_require) &#123;</span><br><span class="line">        eval(&quot;console.log(\&quot;index module\&quot;)\nvar a = __webpack_require(\&quot;./src/a.js\&quot;)\na.abc();\nconsole.log(a)\n //# sourceURL=webpack:///./src/index.js&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>创建一个对象用于存放每个模块，并且将每个模块的路径作为该模块对应的id即属性值，每个属性的属性值为一个函数该函数就是用来执行模块中的代码的，对于commonJs来说每个函数传入的三个参数module, exports, require, 在main.js中由一个立即执行函数将创建的模块对象作为参数传入到该立即执行函数中，并用modules接收， 这样做的目的是防止modules污染全局变量，在立即执行函数中定义已缓存的模块和require函数。</p>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>webpack的默认文件为webpack.config.js,当然也可以手动修改，通过<code>npx webpack --config 文件名</code>来指定配置文件,并且在配置文件中需要通过commonjs导出一个配置对象.</p>
+<p><strong>注意</strong>: 在配置文件中只能使用commonjs和规范的node代码</p>
+<p>当配置文件中的设置与命令行冲突时以命令行为基准，例如配置文件中设置的<code>mode: production;</code> 而当我们通过命令行打包的时候使用的命令是<code>npx webpack --mode development</code>, 这种时候是以命令行为准</p>
+<p><strong>为什么?不是说webpack可以识别各种模块化标准吗?</strong></p>
+<p>一定要彻底理解打包的过程，首先webpack打包的过程是在node环境下的，通过读取入口文件来分析依赖关系，也就是说我们在src中写的所有功能代码在打包的过程中都不会执行，只是被当作文件读取，而配置文件则是在打包过程中要执行的，webpack通过分析配置文件导出的配置信息打包，所以在配置文件中只能使用commonjs和使用node代码，否则在打包的过程中就会报错，而且是在命令行中报错，而我们写的功能代码就算有错误在打包的时候也不会报错，而是在执行最后打包完成之后的出口文件时报错，所以，最后打包完成时形成的js文件就跟我们的代码和文件目录和模块没有任何关系了，就是一个独立出来的js代码，放到哪都可以执行。</p>
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><ul>
+<li>mode: development/production，设置打包之后的js文件是在开发环境下的格式还是运行环境下的格式</li>
+<li>entry: 设置入口文件，对象，默认情况下是src文件夹下的index.js文件</li>
+<li>output: 设置出口文件，对象，默认是在dist文件夹下的main.js 文件</li>
+</ul>
+<h3 id="devtool配置"><a href="#devtool配置" class="headerlink" title="devtool配置"></a>devtool配置</h3><p>使用source map来解决调试问题</p>
+<p>配置值：</p>
+<ul>
+<li>none: 在生产环境中默认为none，即没有源码地图，报错在最终生成的压缩文件中，给生产环境配置为none则生产环境生成的文件中每个模块的代码不会被放到eval中去</li>
+<li>eval: 在开发环境中默认为eval 还有很多，要用的时候去看一下文档</li>
+</ul>
+<p>具体的配置见文档：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/devtool/">https://www.webpackjs.com/configuration/devtool/</a></p>
+<h3 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h3><p>webpack 的作用是将源代码编译（构建、打包）成最终代码</p>
+<p>整个过程大致分为三个步骤</p>
+<ol>
+<li>初始化</li>
+<li>编译</li>
+<li>输出</li>
+</ol>
+<p><img src="" alt="img"><img src="" alt="img"></p>
+<p><strong>初始化</strong></p>
+<p>此阶段，webpack会将<strong>CLI参数</strong>、<strong>配置文件</strong>、<strong>默认配置</strong>进行融合，形成一个最终的配置对象。</p>
+<p>对配置的处理过程是依托一个第三方库<code>yargs</code>完成的</p>
+<p>此阶段相对比较简单，主要是为接下来的编译阶段做必要的准备</p>
+<p>目前，可以简单的理解为，初始化阶段主要用于产生一个最终的配置</p>
+<p><strong>编译</strong></p>
+<ol>
+<li><strong>创建chunk</strong></li>
+</ol>
+<p>chunk是webpack在内部构建过程中的一个概念，译为<code>块</code>，它表示通过某个入口找到的所有依赖的统称。</p>
+<p>根据入口模块（默认为<code>./src/index.js</code>）创建一个chunk</p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293030702-ac748c8c-677d-44c5-b536-dd14b2349af2.png" alt="2020-01-09-11-54-08.png"></p>
+<p>每个chunk都有至少两个属性：</p>
+<ul>
+<li>name：默认为main</li>
+<li>id：唯一编号，开发环境和name相同，生产环境是一个数字，从0开始</li>
+</ul>
+<ol>
+<li><strong>构建所有依赖模块</strong></li>
+</ol>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293067061-a8e2c17b-e563-4393-a7ca-10140237655e.png" alt="2020-01-09-12-32-38.png"></p>
+<blockquote>
+<p>AST在线测试工具：<a target="_blank" rel="noopener" href="https://astexplorer.net/">https://astexplorer.net/</a></p>
+</blockquote>
+<p>简图</p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293117094-9c567a58-fb52-4e0b-a948-5fb3b03e29cc.png" alt="2020-01-09-12-35-05.png"></p>
+<ol>
+<li><strong>产生chunk assets</strong></li>
+</ol>
+<p>在第二步完成后，chunk中会产生一个模块列表，列表中包含了<strong>模块id</strong>和<strong>模块转换后的代码</strong></p>
+<p>接下来，webpack会根据配置为chunk生成一个资源列表，即<code>chunk assets</code>，资源列表可以理解为是生成到最终文件的文件名和文件内容</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293148709-8c9a8f4d-4efb-41a6-ba61-818f4d9289d1.png" alt="2020-01-09-12-39-16.png"></p>
+<blockquote>
+<p>chunk hash是根据所有chunk assets的内容生成的一个hash字符串</p>
+<p>hash：一种算法，具体有很多分类，特点是将一个任意长度的字符串转换为一个固定长度的字符串，而且可以保证原始内容不变，产生的hash字符串就不变</p>
+</blockquote>
+<p>简图</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293180988-1d45f19f-7493-4ac6-a6e1-720c0b22ebe1.png" alt="2020-01-09-12-43-52.png"></p>
+<ol>
+<li><strong>合并chunk assets</strong></li>
+</ol>
+<p>将多个chunk的assets合并到一起，并产生一个总的hash</p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293202302-6527e25a-72d3-4d55-9036-87ec9720778a.png" alt="2020-01-09-12-47-43.png"></p>
+<p><strong>输出</strong></p>
+<p>此步骤非常简单，webpack将利用node中的fs模块（文件处理模块），根据编译产生的总的assets，生成相应的文件。</p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293248114-9b93b848-6048-4a66-82a2-af06c6018501.png" alt="2020-01-09-12-54-34.png"></p>
+<p><strong>总过程</strong></p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293265956-e1dc7b95-1e61-4f22-b124-d52c9a93a7cb.png" alt="2020-01-09-15-51-07.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293277352-1e67e31b-7e7c-4f09-86e8-88b9afa58c01.png" alt="2020-01-09-12-32-38.png"><img src="" alt="img"></p>
+<p><strong>涉及术语</strong></p>
+<ol>
+<li>module：模块，分割的代码单元，webpack中的模块可以是任何内容的文件，不仅限于JS</li>
+<li>chunk：webpack内部构建模块的块，一个chunk中包含多个模块，这些模块是从入口模块通过依赖分析得来的</li>
+<li>bundle：chunk构建好模块后会生成chunk的资源清单，清单中的每一项就是一个bundle，可以认为bundle就是最终生成的文件</li>
+<li>hash：最终的资源清单所有内容联合生成的hash值</li>
+<li>chunkhash：chunk生成的资源清单内容联合生成的hash值</li>
+<li>chunkname：chunk的名称，如果没有配置则使用main</li>
+<li>id：通常指chunk的唯一编号，如果在开发环境下构建，和chunkname相同；如果是生产环境下构建，则使用一个从0开始的数字进行编号</li>
+</ol>
+<h3 id="入口和出口"><a href="#入口和出口" class="headerlink" title="入口和出口"></a>入口和出口</h3><p><strong>前提node知识：</strong></p>
+<ol>
+<li><p>“./“:</p>
+</li>
+<li><ol>
+<li>模块化代码中代表当前js文件所在的目录</li>
+<li>路径处理中表示当前js所在的node执行目录，也就是在那通过node命令执行./就表示在哪个目录</li>
+</ol>
+</li>
+<li><p>__dirname: 在所有情况下都表示当前js所在目录，并且是绝对路径</p>
+</li>
+<li><p>path内置模块，<code>require(&#39;path&#39;)</code>返回一个对象，该对象中提供了很多处理路径的方法，期中一个<code>path.resolve(&#39;./&#39;, &#39;a&#39;, &#39;b&#39;)</code>可以连接多段路径，在路径处理中./表示当前js的执行目录，所以该方法可以方便的获取绝对路径</p>
+</li>
+</ol>
+<p><strong>出口、入口</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//在配置文件webpack.config.js中</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    mode: &#x27;development&#x27;,</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: &#x27;./src/index.js&#x27;,</span><br><span class="line">        a: [&#x27;./src/a.js&#x27;, &#x27;./src/index.js&#x27;] //这时就是有两个chunk</span><br><span class="line">        /*为一个chunk设置多个入口文件*/</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &#x27;target&#x27;),//必须是一个绝对路径，表示最终的asset放置的文件夹，默认是dist文件夹</span><br><span class="line">        filename: &quot;bundle.js&quot;, //静态设定 //配置每一个chunk中生成的资源中的js文件的规则</span><br><span class="line">        filename: &quot;[name].js&quot; //动态规则，[name]表示每个chunk的name</span><br><span class="line">        /* [hash:5]表示总资源的hash，冒号表示取前多少位数字，</span><br><span class="line">        常用于处理浏览器缓存，浏览器一般第一次加载文件的时候都会缓存，</span><br><span class="line">        但是如果在浏览器缓存之后我们又修改了代码那么因为文件名没有变化，</span><br><span class="line">        浏览器就不会请求了直接使用上一次缓存的文件，所以使用hash，</span><br><span class="line">        只要当内容改变就会产生一个完全不一样的hash，文件名就会发生改变，</span><br><span class="line">        这样浏览器就会重新请求*/</span><br><span class="line">        /*[chunkhash] 表示每一个chunk中的hash</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>入口其实配置的是chunk，每一个属性就是一个chunk，属性名为chunk名，属性值为chunk的入口文件，并不是一个入口文件对应一个chunk，一个chunk可以有多个入口文件，但是即使有多个入口文件一个chunk最后也只有一个资源</strong></li>
+</ul>
+<p><strong>出口</strong></p>
+<p>这里的出口是针对资源列表的文件名或路径的配置</p>
+<p>出口通过output进行配置</p>
+<p><strong>入口</strong></p>
+<p><strong>入口真正配置的是chunk</strong></p>
+<p>入口通过entry进行配置</p>
+<p>规则：</p>
+<ul>
+<li>name：chunkname</li>
+<li>hash: 总的资源hash，通常用于解决缓存问题</li>
+<li>chunkhash: 使用chunkhash</li>
+<li>id: 使用chunkid，不推荐</li>
+</ul>
+<h3 id="出口、入口最佳实践"><a href="#出口、入口最佳实践" class="headerlink" title="出口、入口最佳实践"></a>出口、入口最佳实践</h3><ul>
+<li>webpack打包后的文件中，每个文件都有一段重复代码会带来什么影响？</li>
+</ul>
+<blockquote>
+<p>首先明白什么情况下会出现公共代码，比如一些第三方库，我们可能在很多个页面中都要使用，那么这时候每个页面打包出来的文件就会有这些公共代码，但是这些公共代码并不会给我们的维护带来影响，因为这些公共代码一般都是些第三方库，我们是不需要维护这些代码的。其实这些公共代码带来的影响就是会增加浏览器请求负担。</p>
+</blockquote>
+<p>下面是一些经典场景</p>
+<p><strong>一个页面一个JS</strong></p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293578413-7e26d29f-66cc-4cf3-8c31-ff09c994ee3d.png" alt="2020-01-10-12-00-28.png"></p>
+<p>源码结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|—— src</span><br><span class="line">    |—— pageA   页面A的代码目录</span><br><span class="line">        |—— index.js 页面A的启动模块</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— pageB   页面B的代码目录</span><br><span class="line">        |—— index.js 页面B的启动模块</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— pageC   页面C的代码目录</span><br><span class="line">        |—— main1.js 页面C的启动模块1 例如：主功能</span><br><span class="line">        |—— main2.js 页面C的启动模块2 例如：实现访问统计的额外功能</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— common  公共代码目录</span><br><span class="line">        |—— ...</span><br></pre></td></tr></table></figure>
+
+<p>webpack配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">        pageA: &quot;./src/pageA/index.js&quot;,</span><br><span class="line">        pageB: &quot;./src/pageB/index.js&quot;,</span><br><span class="line">        pageC: [&quot;./src/pageC/main1.js&quot;, &quot;./src/pageC/main2.js&quot;]</span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:&quot;[name].[chunkhash:5].js&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式适用于页面之间的功能差异巨大、公共代码较少的情况，这种情况下打包出来的最终代码不会有太多重复</p>
+<p><strong>一个页面多个JS</strong></p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293594615-f5ef999a-32fc-4808-bffa-f78257ab0103.png" alt="2020-01-10-12-38-03.png"></p>
+<p>源码结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|—— src</span><br><span class="line">    |—— pageA   页面A的代码目录</span><br><span class="line">        |—— index.js 页面A的启动模块</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— pageB   页面B的代码目录</span><br><span class="line">        |—— index.js 页面B的启动模块</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— statistics   用于统计访问人数功能目录</span><br><span class="line">        |—— index.js 启动模块</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— common  公共代码目录</span><br><span class="line">        |—— ...</span><br></pre></td></tr></table></figure>
+
+<p>webpack配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    entry:&#123;</span><br><span class="line">        pageA: &quot;./src/pageA/index.js&quot;,</span><br><span class="line">        pageB: &quot;./src/pageB/index.js&quot;,</span><br><span class="line">        statistics: &quot;./src/statistics/index.js&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:&quot;[name].[chunkhash:5].js&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种方式适用于页面之间有一些<strong>独立</strong>、相同的功能，专门使用一个chunk抽离这部分JS有利于浏览器更好的缓存这部分内容。</p>
+<blockquote>
+<p><strong>为什么不使用多启动模块的方式？</strong></p>
+<p>答：这种方式是可以的，但是导致增加传输量，浏览器没法缓存公共的代码。</p>
+</blockquote>
+<p><strong>单页应用</strong></p>
+<p>所谓单页应用，是指整个网站（或网站的某一个功能块）只有一个页面，页面中的内容全部靠JS创建和控制。 vue和react都是实现单页应用的利器。</p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609293618982-97ecb9cc-6ef1-4cb0-a38b-0e7dd3aa2e4a.png" alt="2020-01-10-12-44-13.png"></p>
+<p>源码结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|—— src</span><br><span class="line">    |—— subFunc   子功能目录</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— subFunc   子功能目录</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— common  公共代码目录</span><br><span class="line">        |—— ...</span><br><span class="line">    |—— index.js</span><br></pre></td></tr></table></figure>
+
+<p>webpack配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &quot;./src/index.js&quot;,</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:&quot;index.[hash:5].js&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h3><blockquote>
+<p>loader的本质其实就是一个函数，该函数接收源码字符串，然后返回一个处理后的代码字符串，所以loader作用的时候是在读取文件后生成AST树之前</p>
+</blockquote>
+<p><strong>全流程：</strong></p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294003216-541e627b-6c04-47e5-8fe0-40acb544f129.png" alt="2020-01-13-09-28-52.png"></p>
+<p><strong>chunk中解析模块的流程：</strong></p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294009496-0ffbdec5-48b0-4e42-9eb9-1509dbdf7d1e.png" alt="2020-01-13-09-29-08.png"></p>
+<p><strong>chunk中解析模块的更详细流程：</strong></p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294016813-1184e4ce-7ae0-4942-ad21-c9407f4ba70e.png" alt="2020-01-13-09-35-44.png"></p>
+<p><strong>处理loaders流程：</strong></p>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294022277-841f7914-922e-45eb-ac83-df92fe6ba85f.png" alt="2020-01-13-10-29-54.png"></p>
+<p><strong>loader配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: ,/*test是一个正则表达式，用来匹配符合条件的模块路径，</span><br><span class="line">                即能被该正则表达式匹配到的路径对应的模块会使用该规则中的loaders进行解析*/</span><br><span class="line">                use: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: //加载器的路径</span><br><span class="line">                        options:&#123;</span><br><span class="line">                            //更多配置，可以通过第三方库loader-utils来获取options中的内容</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]//use就是匹配成功之后需要使用的loaders</span><br><span class="line">            &#125;,//规则1</span><br><span class="line">            &#123;&#125;//规则2</span><br><span class="line">        ] //模块的匹配规则,其中每一个规则是一个对象</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>简化配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    module: &#123; //针对模块的配置，目前版本只有两个配置，rules、noParse</span><br><span class="line">        rules: [ //模块匹配规则，可以存在多个规则</span><br><span class="line">            &#123; //每个规则是一个对象</span><br><span class="line">                test: /\.js$/, //匹配的模块正则</span><br><span class="line">                use: [&quot;模块路径1&quot;, &quot;模块路径2&quot;]//loader模块的路径，该字符串会被放置到require中</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>同一个文件匹配到多个规则时从上往下匹配，每匹配到一个规则中的use数组就把里面的loader加入到一个数组中，然后在真正执行loader的时候从数组的后面往前面运行</strong></p>
+<p><strong>use中的loader路径最终其实是被require读取的</strong></p>
+<h3 id="plugin"><a href="#plugin" class="headerlink" title="plugin"></a>plugin</h3><p>loader的功能定位是转换代码，而一些其他的操作难以使用loader完成，比如：</p>
+<ul>
+<li>当webpack生成文件时，顺便多生成一个说明描述文件</li>
+<li>当webpack编译启动时，控制台输出一句话表示webpack启动了</li>
+<li>当xxxx时，xxxx</li>
+</ul>
+<p>这种类似的功能需要把功能嵌入到webpack的编译流程中，而这种事情的实现是依托于plugin的</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609333854057-9d86051a-010a-4c0d-9788-b38c7aa463cc.png" alt="2020-01-15-12-45-16.png"></p>
+<p>plugin的<strong>本质</strong>是一个带有apply方法的对象</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var plugin = &#123;</span><br><span class="line">    apply: function(compiler)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通常，习惯上，我们会将该对象写成构造函数的模式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class MyPlugin&#123;</span><br><span class="line">    apply(compiler)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var plugin = new MyPlugin();</span><br></pre></td></tr></table></figure>
+
+
+
+<p>要将插件应用到webpack，需要把插件对象配置到webpack的plugins数组中，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    plugins:[</span><br><span class="line">        new MyPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>apply函数会在初始化阶段，创建好Compiler对象后运行。</p>
+<p>compiler对象是在初始化阶段构建的，整个webpack打包期间只有一个compiler对象，后续完成打包工作的是compiler对象内部创建的compilation</p>
+<p>apply方法会在初始化阶段<strong>创建好compiler对象后调用</strong>，并向方法传入一个compiler对象</p>
+<blockquote>
+<p><strong>compiler对象和compilation对象有什么区别？</strong></p>
+<p>答：compiler对象内部创建的compilation，具体的打包过程是由compilation来完成的。当文件发生变化时，也就是说当webpack启动监听文件变化时，compilation将重新创建，也就是说compiler只有一个，而compilation可以有多个。</p>
+</blockquote>
+<p><img src="" alt="img"><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609333867152-fd53ee1f-91c5-412e-acb1-62f8edfb084f.png" alt="2020-01-15-12-49-26.png"></p>
+<p>compiler对象提供了大量的钩子函数（hooks，可以理解为事件），plugin的开发者可以注册这些钩子函数，参与webpack编译和生成。</p>
+<p>你可以在apply方法中使用下面的代码注册钩子函数:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class MyPlugin&#123;</span><br><span class="line">    apply(compiler)&#123;</span><br><span class="line">        //在这里注册时间，类似于window.onload $(function()&#123;&#125;)</span><br><span class="line">        compiler.hooks.事件名称.事件类型(name, function(compilation)&#123;</span><br><span class="line">            //事件处理函数</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>事件名称</strong></p>
+<p>即要监听的事件名，即钩子名，所有的钩子：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/api/compiler-hooks">https://www.webpackjs.com/api/compiler-hooks</a></p>
+<p><strong>事件类型</strong></p>
+<p>这一部分使用的是 Tapable API，这个小型的库是一个专门用于钩子函数监听的库。</p>
+<p>它提供了一些事件类型：</p>
+<ul>
+<li>tap：注册一个同步的钩子函数，函数运行完毕则表示事件处理结束</li>
+<li>tapAsync：注册一个基于回调的异步的钩子函数，函数通过调用一个回调表示事件处理结束</li>
+<li>tapPromise：注册一个基于Promise的异步的钩子函数，函数通过返回的Promise进入已决状态表示事件处理结束</li>
+</ul>
+<p><strong>处理函数</strong></p>
+<p>处理函数有一个事件参数<code>compilation</code></p>
+<h3 id="区分环境"><a href="#区分环境" class="headerlink" title="区分环境"></a>区分环境</h3><h3 id="其他细节配置"><a href="#其他细节配置" class="headerlink" title="其他细节配置"></a>其他细节配置</h3><p><strong>context</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">context：path.resolve(``__dirname,``&quot;app&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>该配置会影响入口和loaders的解析，入口和loaders的相对路径会以context的配置作为基准路径，这样，你的配置会独立于CWD（current working directory 当前执行路径）</p>
+<p><strong>output</strong></p>
+<p><strong>1.library</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">library``:`` ``&quot;abc&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这样一来，打包后的结果中，会将自执行函数的执行结果暴露给abc</p>
+<p><strong>2.libraryTarget</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">libraryTarget``:`` ``&quot;var&quot;</span><br></pre></td></tr></table></figure>
+
+<p>该配置可以更加精细的控制如何暴露入口包的导出结果</p>
+<p>其他可用的值有：</p>
+<ul>
+<li>var：默认值，暴露给一个普通变量</li>
+<li>window：暴露给window对象的一个属性</li>
+<li>this：暴露给this的一个属性</li>
+<li>global：暴露给global的一个属性</li>
+<li>commonjs：暴露给exports的一个属性</li>
+<li>其他：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/output/#output-librarytarget">https://www.webpackjs.com/configuration/output/#output-librarytarget</a></li>
+</ul>
+<p><strong>target</strong></p>
+<p>target:”web” //默认值</p>
+<p>设置打包结果最终要运行的环境，常用值有</p>
+<ul>
+<li>web: 打包后的代码运行在web环境中</li>
+<li>node：打包后的代码运行在node环境中</li>
+<li>其他：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/target/">https://www.webpackjs.com/configuration/target/</a></li>
+</ul>
+<p><strong>module.noParse</strong></p>
+<p>noParse: /jquery/</p>
+<p>不解析正则表达式匹配的模块，通常用它来忽略那些大型的单模块库，以提高<strong>构建性能</strong></p>
+<p><strong>resolve</strong></p>
+<p>resolve的相关配置主要用于控制模块解析过程</p>
+<p><strong>modules</strong></p>
+<p><code>modules``:`` ``[``&quot;node_modules&quot;``]</code>  //默认值</p>
+<p>当解析模块时，如果遇到导入语句，<code>require(&quot;test&quot;)</code>，webpack会从下面的位置寻找依赖的模块</p>
+<ol>
+<li>当前目录下的<code>node_modules</code>目录</li>
+<li>上级目录下的<code>node_modules</code>目录</li>
+<li>…</li>
+</ol>
+<p><strong>extensions</strong></p>
+<p><code>extensions``:`` ``[``&quot;.js&quot;``,`` ``&quot;.json&quot;``]``  </code>//默认值</p>
+<p>当解析模块时，遇到无具体后缀的导入语句，例如<code>require(&quot;test&quot;)</code>，会依次测试它的后缀名</p>
+<ul>
+<li>test.js</li>
+<li>test.json</li>
+</ul>
+<p><strong>alias</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alias: &#123;</span><br><span class="line">  &quot;@&quot;: path.resolve(__dirname, &#x27;src&#x27;),</span><br><span class="line">  &quot;_&quot;: __dirname</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有了alias（别名）后，导入语句中可以加入配置的键名，例如<code>require(&quot;@/abc.js&quot;)</code>，webpack会将其看作是<code>require(src的绝对路径+&quot;/abc.js&quot;)</code>。</p>
+<p>在大型系统中，源码结构往往比较深和复杂，别名配置可以让我们更加方便的导入依赖</p>
+<p><strong>externals</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    jquery: &quot;$&quot;,</span><br><span class="line">    lodash: &quot;_&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从最终的bundle中排除掉配置的配置的源码，例如，入口模块是</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//index.js</span><br><span class="line">require(&quot;jquery&quot;)</span><br><span class="line">require(&quot;lodash&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>生成的bundle是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)(&#123;</span><br><span class="line">    &quot;./src/index.js&quot;: function(module, exports, __webpack_require__)&#123;</span><br><span class="line">        __webpack_require__(&quot;jquery&quot;)</span><br><span class="line">        __webpack_require__(&quot;lodash&quot;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;jquery&quot;: function(module, exports)&#123;</span><br><span class="line">        //jquery的大量源码</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;lodash&quot;: function(module, exports)&#123;</span><br><span class="line">        //lodash的大量源码</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>但有了上面的配置后，则变成了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)(&#123;</span><br><span class="line">    &quot;./src/index.js&quot;: function(module, exports, __webpack_require__)&#123;</span><br><span class="line">        __webpack_require__(&quot;jquery&quot;)</span><br><span class="line">        __webpack_require__(&quot;lodash&quot;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;jquery&quot;: function(module, exports)&#123;</span><br><span class="line">        module.exports = $;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;lodash&quot;: function(module, exports)&#123;</span><br><span class="line">        module.exports = _;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这比较适用于一些第三方库来自于外部CDN的情况，这样一来，即可以在页面中使用CDN，又让bundle的体积变得更小，还不影响源码的编写</p>
+<p><strong>stats</strong></p>
+<p>stats控制的是构建过程中控制台的输出内容</p>
+<h2 id="常用扩展"><a href="#常用扩展" class="headerlink" title="常用扩展"></a>常用扩展</h2><h3 id="清除输出目录"><a href="#清除输出目录" class="headerlink" title="清除输出目录"></a>清除输出目录</h3><p>先进行安装：<code>$ npm i -D ``clean-webpack-plugin</code></p>
+<p>把 build或dist (就是放生产环境用的文件) 目录里的文件先清除干净，再生成新的。</p>
+<p>用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var &#123;CleanWebpackPlugin&#125; = require(&quot;clean-webpack-plugin&quot;)</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  mode:&quot;development&quot;,</span><br><span class="line">  devtool:&quot;source-map&quot;,</span><br><span class="line">  output:&#123;</span><br><span class="line">    filename:&quot;[name].[chunkhash:5].js&quot;  //输出的文件名</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins:&#123;</span><br><span class="line">    new CleanWebpackPlugin();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自动生成页面"><a href="#自动生成页面" class="headerlink" title="自动生成页面"></a>自动生成页面</h3><p>先进行安装：<code>$ npm i -D ``html-webpack-plugin</code></p>
+<p>生成html文件</p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var &#123;CleanWebpackPlugin&#125; = require(&quot;clean-webpack-plugin&quot;)</span><br><span class="line">var HtmlWebpackPlugin = require(&quot;html-webpack-plugin&quot;)</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  ......</span><br><span class="line">  plugins:&#123;//这里可以写多个，顺序无所谓</span><br><span class="line">    new CleanWebpackPlugin(),</span><br><span class="line">    new HtmlWebpackPlugin()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制静态资源"><a href="#复制静态资源" class="headerlink" title="复制静态资源"></a>复制静态资源</h3><p>安装：<code>$ npm i -D ``cope-webpack-plugin</code></p>
+<p>复制指定文件夹下的内容到dist文件夹里</p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">var CopyPlugin = require(&quot;copy-webpack-plugin&quot;)</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  ......</span><br><span class="line">  plugins:&#123;</span><br><span class="line">    new CopyPlugin([</span><br><span class="line">        &#123;from:&quot;./public&quot;,to:&quot;./&quot;&#125;//复制规则</span><br><span class="line">        //意思是说将public文件夹里的内容放进dist目录里。</span><br><span class="line">        //如果to写&quot;./dist&quot;,则会在dist里面生成一个dist文件夹</span><br><span class="line">    ]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="开发服务器"><a href="#开发服务器" class="headerlink" title="开发服务器"></a>开发服务器</h3><p>在<strong>开发阶段</strong>，目前遇到的问题是打包、运行、调试过程过于繁琐，回顾一下我们的操作流程：</p>
+<ol>
+<li>编写代码</li>
+<li>控制台运行命令完成打包</li>
+<li>打开页面查看效果</li>
+<li>继续编写代码，回到步骤2</li>
+</ol>
+<p>并且，我们往往希望把最终生成的代码和页面部署到服务器上，来模拟真实环境</p>
+<p>为了解决这些问题，webpack官方制作了一个单独的库：<strong>webpack-dev-server</strong></p>
+<p>它<strong>既不是plugin也不是loader</strong></p>
+<p>先来看看它怎么用</p>
+<ol>
+<li>安装<code>$ npm i -D webpack-dev-server</code></li>
+<li>执行<code>webpack-dev-server</code>命令</li>
+</ol>
+<p><code>webpack-dev-server</code>命令几乎支持所有的webpack命令参数，如<code>--config</code>、<code>-env</code>等等，你可以把它当作webpack命令使用</p>
+<p>这个命令是专门为开发阶段服务的，真正部署的时候还是得使用webpack命令</p>
+<p>当我们执行<code>webpack-dev-server</code>命令后，它做了以下操作：</p>
+<ol>
+<li><p>内部执行webpack命令，传递命令参数</p>
+</li>
+<li><p>开启watch</p>
+</li>
+<li><p>注册hooks：类似于plugin，webpack-dev-server会向webpack中注册一些钩子函数，主要功能如下：</p>
+</li>
+<li><ol>
+<li>将资源列表（aseets）保存起来</li>
+<li>禁止webpack输出文件</li>
+</ol>
+</li>
+<li><p>用express开启一个服务器，监听某个端口，当请求到达后，根据请求的路径，给予相应的资源内容</p>
+</li>
+</ol>
+<p><strong>配置</strong></p>
+<p>针对webpack-dev-server的配置，参考：<a target="_blank" rel="noopener" href="https://www.webpackjs.com/configuration/dev-server/">https://www.webpackjs.com/configuration/dev-server/</a></p>
+<p>常见配置有：</p>
+<ul>
+<li>port：配置监听端口</li>
+<li>proxy：配置代理，常用于跨域访问</li>
+<li>stats：配置控制台输出内容</li>
+</ul>
+<h2 id="CSS工程化"><a href="#CSS工程化" class="headerlink" title="CSS工程化"></a>CSS工程化</h2><h2 id="JS兼容性"><a href="#JS兼容性" class="headerlink" title="JS兼容性"></a>JS兼容性</h2><h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h2 id="补充和案例"><a href="#补充和案例" class="headerlink" title="补充和案例"></a>补充和案例</h2>
+      </div>
+    
+  </div>
+
+</article>
+
+<button class="assist-btn2 circle" id="assist_btn2" title="点亮屏幕" style="left: 27px; top: 152px;">
+  <i class="iconfont" style="display:inline-block;color:red;width:20px;height:20px;">&#xe61d;</i>
+</button>
+<button class="assist-btn1 circle" id="assist_btn1" title="关闭屏幕亮度" style="left: 27px; top: 152px;">
+  <i class="iconfont toc-title" style="display:inline-block;color:red;width:20px;height:20px;">&#xe61d;</i>
+</button>
+
+
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>	
+
+
+<!-- 微信公众号引流 openwrite.cn -->
+<!-- 
+<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+  const btw = new BTWPlugin();
+  btw.init({
+    id: "container",
+    blogId: "",
+    name: "前端之旅",
+    qrcode: "https://poetries1.gitee.io/img-repo/2020/06/qrcode.jpg",
+    keyword: "3a3b3c",
+  });
+</script> -->
+
+<script type="text/javascript">
+
+// white theme
+var body = {color: "#555", background: "#000"};
+var a_tag = {color: "#222"};
+var header = { background: "#222"};
+var logo_line_i = {background: "#222"};
+// var post_code = {background: "#eee", color: "#222"};
+
+function switch_theme() {
+ $("body").css(body);
+ $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+ $(".header, .footer").css(header);
+ $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+ //$(".post code").css(post_code);
+ $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+ $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+ 
+ // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+ //$("#assist_btn1").hide(1500);
+}
+
+$(function () {
+$("#assist_btn2").css("display","none");
+ $("#assist_btn1").click(function() {
+     switch_theme();
+$("div#toc.toc-article").css({
+ "background":"#eaeaea",
+ "opacity":1
+});
+$(".toc-article ol").show();
+$("#toc.toc-article .toc-title").css("color","#a98602");
+$("#assist_btn1").css("display","none");
+$("#assist_btn2").css("display","block");
+ });
+$("#assist_btn2").click(function() {
+$("#assist_btn2").css("display","none");
+$("#assist_btn1").css("display","block");
+$("body").css("background","url(http://www.miaov.com/static/ie/images/news/bg.png)")
+     $(".header, .footer").css("background","url(http://www.miaov.com/static/ie/images/news/bg.png)")
+$(".toc-article ol").toggle(1000);
+ });
+});
+
+
+//背景随机
+
+var Y, O, E, L, B, C, T, z, N, S, A, I;
+!function() {
+var e = function() {
+for (O.clearRect(0, 0, L, B), T = [{
+x: 0,
+y: .7 * B + C
+}, {
+x: 0,
+y: .7 * B - C
+}]; T[1].x < L + C;) t(T[0], T[1])
+}, t = function(e, t) {
+O.beginPath(), O.moveTo(e.x, e.y), O.lineTo(t.x, t.y);
+var n = t.x + (2 * I() - .25) * C,
+ r = a(t.y);
+O.lineTo(n, r), O.closePath(), N -= S / -50, O.fillStyle = "#" + (127 * A(N) + 128 << 16 | 127 * A(N + S / 3) + 128 << 8 | 127 * A(N + S / 3 * 2) + 128).toString(16), O.fill(), T[0] = T[1], T[1] = {
+ x: n,
+ y: r
+}
+}, a = function n(e) {
+var t = e + (2 * I() - 1.1) * C;
+return t > B || t < 0 ? n(e) : t
+};
+Y = document.getElementById("evanyou"), O = Y.getContext("2d"), E = window.devicePixelRatio || 1, L = window.innerWidth, B = window.innerHeight, C = 90, z = Math, N = 0, S = 2 * z.PI, A = z.cos, I = z.random, Y.width = L * E, Y.height = B * E, O.scale(E, E), O.globalAlpha = .6, document.onclick = e, document.ontouchstart = e, e()
+}()
+
+   
+$("#toc-eye").click(function(){
+$("#toc.toc-article").toggle(1000);
+});
+
+</script>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下huaideabcd</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/weixin.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/zhifubao.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2022/05/20/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E2%80%94%E2%80%94%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2022/05/20/TypeScript/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'false' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "nkvLdnK5xBRTBnMkXqpCq3Ie-gzGzoHsz",
+            appKey: "r2K6NaTBu6ebcvjzHlNUFKWR",
+            avatar:'mm',
+            placeholder: "有什么问题，欢迎留言指正与交流...",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+
+  <!-- 爆炸红心效果 -->
+  <!-- <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+  <script type="text/javascript" src="/js/firework.js"></script> -->
+ 
+  
+</body>
+</html>

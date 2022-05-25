@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>ES6 | huaideabcd Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="ES6," />
+  
+
+  <meta name="description" content="ES6ECMAScript、JavaScript、NodeJs，它们的区别是什么？  ECMAScript：简称ES，是一个语言标准（循环、判断、变量、数组等数据类型） JavaScript：运行在浏览器端的语言，该语言使用ES标准。 ES + web api &#x3D; JavaScript NodeJs：运行在服务器端的语言，该语言使用ES标准。 ES + node api &#x3D; JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6">
+<meta property="og:url" content="https://github.com/huaideabcd/huaideabcd.github.io.git/2022/05/20/ES6/index.html">
+<meta property="og:site_name" content="huaideabcd Blog">
+<meta property="og:description" content="ES6ECMAScript、JavaScript、NodeJs，它们的区别是什么？  ECMAScript：简称ES，是一个语言标准（循环、判断、变量、数组等数据类型） JavaScript：运行在浏览器端的语言，该语言使用ES标准。 ES + web api &#x3D; JavaScript NodeJs：运行在服务器端的语言，该语言使用ES标准。 ES + node api &#x3D; JavaScript">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294638948-60f1b824-e2f0-4d82-b8fa-6799e2b7b228.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294638960-9c40369a-5267-43fe-a68e-e5e71917754f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294639015-f0a412aa-d6e8-41ec-a0d6-cb1cc3a0e13c.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295056735-3f74194e-5b8a-411d-8e6c-fee95180d5c8.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295111065-3f10ad71-21b9-4edf-865e-b0648ce8fb5f.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295111015-1ff2f0c2-87de-447d-a79d-b407e8ec7f99.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295214081-47aa8ad6-1e5b-4415-8b61-ab87fc780c60.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295336927-bd43b802-9848-4be7-97ea-7b2acf60d597.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295334888-115a8626-e79c-4ea4-9991-3c0204a81d86.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295341524-ac2723e5-9ca2-4ec3-b693-29de16808ece.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295343546-a6e51022-44fc-4c8b-abe5-c76720d7192c.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295335567-d1b94b4d-971c-4fd2-8ff2-82a9f1308d95.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295344551-5aa2b1a2-8998-4922-81ca-5e5d98930004.png">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295351614-6440dad3-255a-4990-9271-55c4e28a5b8b.png">
+<meta property="article:published_time" content="2022-05-20T13:58:10.000Z">
+<meta property="article:modified_time" content="2022-05-25T10:32:13.670Z">
+<meta property="article:author" content="huaideabcd">
+<meta property="article:tag" content="ES6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294638948-60f1b824-e2f0-4d82-b8fa-6799e2b7b228.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+<link href="/css/other.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    
+<link rel="stylesheet" href="/css/personal-style.css">
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  <!-- 聊天系统 -->
+  
+    
+   <link type="text/css" rel="stylesheet" href="/renxi/default.css">
+   <style>
+      #modal {
+        position: static !important;
+      }
+      .filter {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #fe5757;
+        animation: colorChange 30s ease-in-out infinite;
+        animation-fill-mode: both;
+        mix-blend-mode: overlay;
+      }
+  
+      @keyframes colorChange {
+        0%, 100% {
+            opacity: 0;
+        }
+        50% {
+            opacity: .9;
+        }
+      }
+   </style>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="huaideabcd Blog" type="application/atom+xml">
+</head>
+
+<body>
+  
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">导航</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">导航</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/categories/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tags/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录<i class="iconfont toc-title" style="display:inline-block;color:#87998d;width:20px;height:20px;">&#xf004b;</i></strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6"><span class="toc-text">ES6</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">声明变量的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8const%E5%A3%B0%E6%98%8E%E5%B8%B8%E9%87%8F"><span class="toc-text">使用const声明常量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E5%A5%BD%E7%9A%84Unicode%E6%94%AF%E6%8C%81"><span class="toc-text">更好的Unicode支持</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2API"><span class="toc-text">更多的字符串API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">模板字符串( )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#arguments%E7%9A%84%E7%BC%BA%E9%99%B7%EF%BC%9A"><span class="toc-text">arguments的缺陷：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%95%E5%BC%80%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">展开运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-text">箭头函数：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6%E6%96%B0%E5%A2%9E%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-text">ES6新增的对象字面量语法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object%E7%9A%84%E6%96%B0%E5%A2%9EAPI"><span class="toc-text">Object的新增API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%EF%BC%9A%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="toc-text">类：构造函数的语法糖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E8%A7%A3%E6%9E%84"><span class="toc-text">对象解构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%A7%A3%E6%9E%84"><span class="toc-text">数组解构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%84"><span class="toc-text">参数解构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%AC%A6%E5%8F%B7"><span class="toc-text">普通符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B1%E4%BA%AB%E7%AC%A6%E5%8F%B7"><span class="toc-text">共享符号</span></a></li></ol></li></ol></li></ol></li></ol>
+  </div>
+  
+
+
+
+
+<div class="content content-post CENTER">
+   <!-- canvas 彩带 -->
+<canvas id="evanyou" width="1302" height="678" style="position: fixed;width: 100%;height: 100%;top: 0;left:0;z-index:-1;"></canvas>
+
+<!-- <div class="qrcode_container">
+  <div class="tencent_code">
+    <h4>关注作者公众号</h4> 
+    <p>和万千小伙伴一起学习</p> 
+    <img src="https://poetries1.gitee.io/img-repo/2020/06/qrcode.jpg" alt="">
+  </div> 
+</div> -->
+
+<article id="post-ES6" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header" style="position:relative;">
+    <h1 class="post-title">ES6</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2022.05.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>huaideabcd</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Javascript/">Javascript</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+       
+          <span class="post-count">
+            <i class="fa fa-file-word-o"></i>&nbsp
+            <span>字数统计 4.5k字</span>
+          </span>
+
+          <span class="post-count">
+            <i class="fa fa-columns"></i>&nbsp
+            <span>阅读时长 17分</span>
+          </span>
+      
+      
+    </div>
+
+    <i class="iconfont" id="toc-eye" style="display:inline-block;color:#b36619;position:absolute;top:0;right:0;cursor:pointer;
+    font-size: 24px;">&#xe61c;</i>
+
+  </header>
+
+  <div class="article-content">
+    
+      <div id="container">
+        <h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><p><strong>ECMAScript、JavaScript、NodeJs，它们的区别是什么？</strong></p>
+<ul>
+<li>ECMAScript：简称ES，是一个语言标准（循环、判断、变量、数组等数据类型）</li>
+<li>JavaScript：运行在浏览器端的语言，该语言使用ES标准。 ES + web api = JavaScript</li>
+<li>NodeJs：运行在服务器端的语言，该语言使用ES标准。 ES + node api = JavaScript</li>
+</ul>
+<p>无论JavaScript，还是NodeJs，它们都是ES的超集（super set）</p>
+<h4 id="声明变量的问题"><a href="#声明变量的问题" class="headerlink" title="声明变量的问题"></a>声明变量的问题</h4><p><strong>使用var声明变量</strong></p>
+<ol>
+<li><p>允许重复的变量声明：导致数据被覆盖</p>
+</li>
+<li><p>变量提升：怪异的数据访问、闭包问题</p>
+</li>
+<li><p>全局变量挂载到全局对象：全局对象成员污染问题</p>
+</li>
+</ol>
+<p><strong>使用<strong><strong>let</strong></strong>声明变量</strong></p>
+<p>ES6不仅引入let关键字用于解决变量声明的问题，同时引入了块级作用域的概念</p>
+<p>块级作用域：代码执行时遇到花括号，会创建一个块级作用域，花括号结束，销毁块级作用域</p>
+<p>声明变量的问题</p>
+<ol>
+<li><p>全局变量挂载到全局对象：全局对象成员污染问题</p>
+<p>let声明的变量不会挂载到全局对象</p>
+</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294638948-60f1b824-e2f0-4d82-b8fa-6799e2b7b228.png" alt="image.png"></p>
+<ol start="2">
+<li><p>允许重复的变量声明：导致数据被覆盖</p>
+<p>let声明的变量，不允许当前作用域范围内重复声明</p>
+<p>在块级作用域中用let定义的变量，在作用域外不能访问</p>
+</li>
+</ol>
+<p>补充：在之前js中，作用域就只分为全局作用域和函数作用域，而在es6中一个大括号就相当于一个块级作用域</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294638960-9c40369a-5267-43fe-a68e-e5e71917754f.png" alt="image.png"></p>
+<ol start="3">
+<li>变量提升：怪异的数据访问、闭包问题</li>
+</ol>
+<p>使用let不会有变量提升，因此，不能在定义let变量之前使用它</p>
+<p>底层实现上，let声明的变量实际上也会有提升，但是，提升后会将其放入到“暂时性死区”，如果访问的变量位于暂时性死区，则会报错：“Cannot access ‘a’ before initialization”。当代码运行到该变量的声明语句时，会将其从暂时性死区中移除。</p>
+<p>在循环中，用let声明的循环变量，会特殊处理，每次进入循环体，都会开启一个新的作用域，并且将循环变量绑定到该作用域（每次循环，使用的是一个全新的循环变量）。在循环中使用let声明的循环变量，在循环结束后会销毁。</p>
+<h4 id="使用const声明常量"><a href="#使用const声明常量" class="headerlink" title="使用const声明常量"></a>使用const声明常量</h4><p>const和let完全相同，仅在于用const声明的变量，必须在声明时赋值，而且不可以重新赋值。</p>
+<p>实际上，在开发中，应该尽量使用const来声明变量，以保证变量的值不会随意篡改，原因如下：</p>
+<ol>
+<li><p>根据经验，开发中的很多变量，都是不会更改，也不应该更改的。</p>
+</li>
+<li><p>后续的很多框架或者是第三方JS库，都要求数据不可变，使用常量可以一定程度上保证这一点。</p>
+</li>
+</ol>
+<p>注意的细节：</p>
+<ol>
+<li>常量不可变，是指声明的常量的内存空间不可变，并不保证内存空间中的地址指向的其他空间不可变。</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609294639015-f0a412aa-d6e8-41ec-a0d6-cb1cc3a0e13c.png" alt="image.png"></p>
+<ol start="2">
+<li>常量的命名</li>
+</ol>
+<ul>
+<li>特殊的常量：该常量从字面意义上，一定是不可变的，比如圆周率（PI）、月地距地（MOON_EARTH_DISTANCE）或其</li>
+</ul>
+<p>​      他一些绝不可能变化的配置。</p>
+<p>​      通常，该常量的名称全部使用大写，多个单词之间用下划线分割</p>
+<ul>
+<li><p>普通的常量：使用和之前一样的命名即可，小驼峰式。</p>
+</li>
+<li><p>在for循环中，循环变量不可以使用const声明。可以使用for in</p>
+</li>
+</ul>
+<h4 id="更好的Unicode支持"><a href="#更好的Unicode支持" class="headerlink" title="更好的Unicode支持"></a>更好的Unicode支持</h4><p>​    早期，由于存储空间宝贵，Unicode使用16位二进制来存储文字。我们将一个16位的二进制编码叫做一个码元（Code Unit）。</p>
+<p>​    后来，由于技术的发展，Unicode对文字编码进行了扩展，将某些文字扩展到了32位（占用两个码元），并且，将某个文字对应的二进制数字叫做码点（Code Point）。</p>
+<p>​    ES6为了解决这个困扰，为字符串提供了方法：codePointAt，根据字符串码元的位置得到其码点。</p>
+<p>​    同时，ES6为正则表达式添加了一个flag: u，如果添加了该配置，则匹配时，使用码点匹配</p>
+<h4 id="更多的字符串API"><a href="#更多的字符串API" class="headerlink" title="更多的字符串API"></a>更多的字符串API</h4><p>以下均为字符串的实例（原型）方法</p>
+<ul>
+<li>includes</li>
+</ul>
+<p>判断字符串中是否包含指定的子字符串</p>
+<p>- startsWith</p>
+<p>判断字符串中是否以指定的字符串开始</p>
+<p>- endsWith</p>
+<p>判断字符串中是否以指定的字符串结尾</p>
+<p>- repeat</p>
+<p>将字符串重复指定的次数，然后返回一个新字符串。</p>
+<p><strong>[扩展]正则中的粘连标记</strong></p>
+<p>标记名：y</p>
+<p>含义：匹配时，完全按照正则对象中的lastIndex位置开始匹配，并且匹配的位置必须在lastIndex位置。</p>
+<h4 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串( )"></a>模板字符串(<code> </code>)</h4><p>ES6之前处理字符串繁琐的两个方面：</p>
+<ol>
+<li><p>多行字符串</p>
+</li>
+<li><p>字符串拼接</p>
+</li>
+</ol>
+<p>在ES6中，提供了模板字符串的书写，可以非常方便的换行和拼接，要做的，仅仅是将字符串的开始或结尾改为 ` 符号</p>
+<p>如果要在字符串中拼接js表达式，只需要在模板字符串中使用<code>$&#123;JS表达式&#125;</code></p>
+<p><strong>[扩展]模板字符串标记</strong></p>
+<p>在模板字符串书写之前，可以加上标记:</p>
+<p>```js</p>
+<p>标记名<code>模板字符串</code></p>
+<p>```</p>
+<p>标记是一个函数，函数参数如下：</p>
+<ol>
+<li><p>参数1：被插值分割的字符串数组</p>
+</li>
+<li><p>后续参数：所有的插值</p>
+</li>
+</ol>
+<h4 id="arguments的缺陷："><a href="#arguments的缺陷：" class="headerlink" title="arguments的缺陷："></a>arguments的缺陷：</h4><ol>
+<li><p>如果和形参配合使用，容易导致混乱</p>
+</li>
+<li><p>从语义上，使用arguments获取参数，由于形参缺失，无法从函数定义上理解函数的真实意图</p>
+</li>
+</ol>
+<p>ES6的剩余参数专门用于收集末尾的所有参数，将其放置到一个形参数组中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function test(a, b, ...args) &#123;</span><br><span class="line">    console.log(args);</span><br><span class="line">&#125;</span><br><span class="line">test(1, 32, 46, 7, 34);</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295056735-3f74194e-5b8a-411d-8e6c-fee95180d5c8.png" alt="image.png"></p>
+<p><strong>语法:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function (...形参名)&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>细节：</strong></p>
+<p>\1. 一个函数，仅能出现一个剩余参数。即形参中只能有一个<code>...``args</code></p>
+<p>\2. 一个函数，如果有剩余参数，剩余参数必须是最后一个参数。不能写为function test(a,…args，b)</p>
+<h4 id="展开运算符"><a href="#展开运算符" class="headerlink" title="展开运算符"></a>展开运算符</h4><p>使用方式：…要展开的东西</p>
+<ul>
+<li>对数组展开 ES6</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const arr1 = [3, 67, 8, 5];</span><br><span class="line">const arr2 = [0, ...arr1, 1];</span><br><span class="line">console.log(arr2, arr1 === arr2);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295111065-3f10ad71-21b9-4edf-865e-b0648ce8fb5f.png" alt="image.png"></p>
+<p>例2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 对所有数字求和</span><br><span class="line">function sum(...args) &#123;</span><br><span class="line">    let sum = 0;</span><br><span class="line">    for (let i = 0; i &lt; args.length; i++) &#123;</span><br><span class="line">        sum += args[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//获取一个指定长度的随机数组成的数组</span><br><span class="line">function getRandomNumbers(length) &#123;</span><br><span class="line">    const arr = [];</span><br><span class="line">    for (let i = 0; i &lt; length; i++) &#123;</span><br><span class="line">        arr.push(Math.random());</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line">const numbers = getRandomNumbers(10);</span><br><span class="line"></span><br><span class="line">//将数组的每一项展开，依次作为参数传递，而不是把整个数组作为一个参数传递</span><br><span class="line">console.log(sum(...numbers))//相当于传递了10个参数。输出10个随机数的和。</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>对对象展开 ES7</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const obj1 = &#123;</span><br><span class="line">    name: &quot;小明&quot;,</span><br><span class="line">    age: 18,</span><br><span class="line">    love: &quot;milk&quot;,</span><br><span class="line">    address: &#123;</span><br><span class="line">        country: &quot;中国&quot;,</span><br><span class="line">        province: &quot;黑龙江&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 浅克隆到obj2</span><br><span class="line">const obj2 = &#123;</span><br><span class="line">    ...obj1,</span><br><span class="line">    name: &quot;李华&quot;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(obj2)</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295111015-1ff2f0c2-87de-447d-a79d-b407e8ec7f99.png" alt="image.png"></p>
+<p>如果需要在克隆address的同时在obj2的address里添加属性及属性值，就在obj2里添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">address:&#123;</span><br><span class="line">        ...obj1.address,</span><br><span class="line">        city:&quot;哈尔滨&quot;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>ES6提供了一个特殊的API，可以使用该API在函数内部，判断该函数是否使用了new来调用：<strong>new.target</strong> </p>
+<p>该表达式得到的是：如果没有使用new来调用函数，则返回undefined</p>
+<p>如果使用new调用函数，则得到的是new关键字后面的函数本身</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295214081-47aa8ad6-1e5b-4415-8b61-ab87fc780c60.png" alt="image.png"></p>
+<h4 id="箭头函数："><a href="#箭头函数：" class="headerlink" title="箭头函数："></a>箭头函数：</h4><p>在js中的this指向</p>
+<ol>
+<li>通过对象调用函数，this指向对象</li>
+</ol>
+<p>\2. 直接调用函数，this指向全局对象</p>
+<p>\3. 如果通过new调用函数，this指向新创建的对象</p>
+<p>\4. 如果通过apply、call、bind调用函数，this指向指定的数据</p>
+<p>\5. 如果是DOM事件函数，this指向事件源</p>
+<p><strong>使用语法</strong></p>
+<p>箭头函数是一个函数表达式，理论上，任何使用函数表达式的场景都可以使用箭头函数</p>
+<p>完整语法：</p>
+<p>(参数1, 参数2, …)=&gt;{</p>
+<p>   //函数体</p>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const isOdd = (num) =&gt; &#123;</span><br><span class="line">    return num % 2 !== 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果参数只有一个，可以省略小括号：</p>
+<p>参数 =&gt; {</p>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const print = num =&gt; &#123;</span><br><span class="line">    console.log(&quot;给我的数字是：&quot;, num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果箭头函数只有一条返回语句，可以省略大括号，和return关键字：</p>
+<p>参数 =&gt; 返回值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const isOdd = num =&gt; num % 2 !== 0;</span><br></pre></td></tr></table></figure>
+
+<p>如果要返回一个对象的话，返回的对象需要用（）包裹起来：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const sum = (a, b) =&gt; (&#123;</span><br><span class="line">    a: a,</span><br><span class="line">    b: b</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意细节</strong></p>
+<p>- 箭头函数中，不存在<code>this</code>、<code>arguments</code>、<code>new.target</code>，如果使用了，则使用的是函数外层的对应的<code>this</code>、<code>arguments</code>、<code>new.target</code></p>
+<p>- 箭头函数没有原型</p>
+<p>- 箭头函数不能作用构造函数使用</p>
+<p><strong>应用场景</strong></p>
+<p>\1. 临时性使用的函数，并不会可以调用它，比如：</p>
+<p>  \1. 事件处理函数：页面事件（onload页面加载事件（页面打开后执行），onunload页面卸载事件（页面关闭时执行）），鼠标事件，键盘事件，其他事件（多用于表单）。</p>
+<p>  \2. 异步处理函数</p>
+<p>  \3. 其他临时性的函数</p>
+<p>\2. 为了绑定外层this的函数</p>
+<p>\3. 在不影响其他代码的情况下，保持代码的简洁，最常见的，数组方法中的回调函数。</p>
+<h4 id="ES6新增的对象字面量语法："><a href="#ES6新增的对象字面量语法：" class="headerlink" title="ES6新增的对象字面量语法："></a>ES6新增的对象字面量语法：</h4><p>\1. 成员速写</p>
+<p>如果对象字面量初始化时，成员的名称来自于一个变量，并且和变量的名称相同，则可以进行简写（语法糖）</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295336927-bd43b802-9848-4be7-97ea-7b2acf60d597.png" alt="image.png"></p>
+<p>\2. 方法速写</p>
+<p>对象字面初始化时，方法可以省略冒号和function关键字。（语法糖）</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295334888-115a8626-e79c-4ea4-9991-3c0204a81d86.png" alt="image.png"></p>
+<p>\3. 计算属性名</p>
+<p>有的时候，初始化对象时，某些属性名可能来自于某个表达式的值，在ES6，可以使用中括号来表示该属性名是通过计算得到的。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295341524-ac2723e5-9ca2-4ec3-b693-29de16808ece.png" alt="image.png"></p>
+<h4 id="Object的新增API"><a href="#Object的新增API" class="headerlink" title="Object的新增API"></a>Object的新增API</h4><p>\1. <code>Object.is</code></p>
+<p>用于判断两个数据是否相等，基本上跟严格相等（===）是一致的，除了以下两点：</p>
+<ol>
+<li><p>NaN和NaN相等</p>
+</li>
+<li><p>+0和-0不相等</p>
+</li>
+</ol>
+<p>\2. <code>Object.assign</code></p>
+<p>用于混合对象</p>
+<p>\3. <code>Object.getOwnPropertyNames </code>的枚举顺序</p>
+<p><code>Object.getOwnPropertyNames</code>方法之前就存在，只不过，官方没有明确要求，对属性的顺序如何排序，如何排序，完全由浏览器厂商决定。</p>
+<p>ES6规定了该方法返回的数组的排序方式如下：</p>
+<p>- 先排数字，并按照升序排序</p>
+<p>- 再排其他，按照书写顺序排序</p>
+<p>\4. <code>Object.setPrototypeOf</code></p>
+<p>该函数用于设置某个对象的隐式原型</p>
+<p>比如： <code>Object.setPrototypeOf(obj1, obj2)</code>，</p>
+<p>相当于： <code>obj1.__proto__ = obj2</code></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295343546-a6e51022-44fc-4c8b-abe5-c76720d7192c.png" alt="image.png"></p>
+<h4 id="类：构造函数的语法糖"><a href="#类：构造函数的语法糖" class="headerlink" title="类：构造函数的语法糖"></a>类：构造函数的语法糖</h4><p>传统的构造函数的问题</p>
+<p>\1. 属性和原型方法定义分离，降低了可读性</p>
+<p>\2. 原型成员可以被枚举</p>
+<p>\3. 默认情况下，构造函数仍然可以被当作普通函数使用<img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295335567-d1b94b4d-971c-4fd2-8ff2-82a9f1308d95.png" alt="image.png"></p>
+<p>类的特点</p>
+<p>\1. 类声明不会被提升，与 let 和 const 一样，存在暂时性死区</p>
+<p>\2. 类中的所有代码均在严格模式下执行</p>
+<p>\3. 类的所有方法都是不可枚举的</p>
+<p>\4. 类的所有方法都无法被当作构造函数使用</p>
+<p>\5. 类的构造器必须使用 new 来调用</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295344551-5aa2b1a2-8998-4922-81ca-5e5d98930004.png" alt="image.png"></p>
+<p><strong>类的其他书写方式</strong></p>
+<p>\1. 可计算的成员名</p>
+<p>\2. getter和setter</p>
+<p><code>Object.defineProperty</code> 可定义某个对象成员属性的读取和设置</p>
+<p>使用getter和setter控制的属性，不在原型上</p>
+<p>\3. 静态成员</p>
+<p>构造函数本身的成员</p>
+<p>使用static关键字定义的成员即静态成员</p>
+<p>\4. 字段初始化器（ES7）</p>
+<p>注意：</p>
+<p>1). 使用static的字段初始化器，添加的是静态成员</p>
+<p>2). 没有使用static的字段初始化器，添加的成员位于对象上</p>
+<p>3). 箭头函数在字段初始化器位置上，指向当前对象</p>
+<p>\5. 类表达式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const A = class &#123; </span><br><span class="line">    a = 1;</span><br><span class="line">    b = 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>\6. [扩展]装饰器（ES7）(Decorator)</p>
+<p>横切关注点</p>
+<p>装饰器的本质是一个函数</p>
+<p><strong>类的继承</strong></p>
+<p>如果两个类A和B，如果可以描述为：B 是 A，则，A和B形成继承关系</p>
+<p>如果B是A，则：</p>
+<p>\1. B继承自A</p>
+<p>\2. A派生B</p>
+<p>\3. B是A的子类</p>
+<p>\4. A是B的父类</p>
+<p>如果A是B的父类，则B会自动拥有A中的所有实例成员。</p>
+<p>新的关键字：</p>
+<p>- extends：继承，用于类的定义</p>
+<p>- super</p>
+<p>  - 直接当作函数调用，表示父类构造函数</p>
+<p>  - 如果当作对象使用，则表示父类的原型</p>
+<p>注意：ES6要求，如果定义了constructor，并且该类是子类，则必须在constructor的第一行手动调用父类的构造函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Dog extends Animal &#123;</span><br><span class="line">    constructor(name, age, sex) &#123;</span><br><span class="line">        super(&quot;犬类&quot;, name, age, sex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相当于之前写法的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function Dog(name, age, sex) &#123;</span><br><span class="line">    Animal.call(this, &quot;犬类&quot;, name, age, sex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果子类不写constructor，则会有默认的构造器，该构造器需要的参数和父类一致，并且自动调用父类构造器</p>
+<p>默认：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Dog extends Animal &#123;</span><br><span class="line">    constructor(type,name, age, sex) &#123;</span><br><span class="line">        super(type, name, age, sex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象解构"><a href="#对象解构" class="headerlink" title="对象解构"></a>对象解构</h4><p>使用ES6的一种语法规则，将一个对象或数组的某个属性提取到某个变量中</p>
+<p><strong>解构不会对被解构的目标造成任何影响</strong></p>
+<p>1.解构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//从中取属性，之前 var name = user.name;</span><br><span class="line">// 先定义5个变量，然后从对象中读取同名属性，放到变量中</span><br><span class="line">let &#123; name, age, sex, other &#125; = user;</span><br><span class="line">console.log(name, age, sex, other);</span><br><span class="line">//Rich Brain 21 男 &#123;country: &quot;Indonesia&quot;, identity: &quot;rapper&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.给属性添加默认值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let &#123; name, age, sex, value = &quot;cute&quot;, other &#125; = user;</span><br><span class="line">console.log(name, age, sex, value, other);</span><br><span class="line">//Rich Brain 21 男 cute &#123;country: &quot;Indonesia&quot;, identity: &quot;rapper&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.给sex添加同名属性，这时输出sex会报错no defind</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let &#123;name,age,sex:gender,other&#125; = user;</span><br><span class="line">console.log(name,age,gender,other);</span><br><span class="line">//Rich Brain 21 男 &#123;country: &quot;Indonesia&quot;, identity: &quot;rapper&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.给同名属性赋值，前提是原属性名中没有值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let &#123;name:nickname = &quot;七哥&quot;,age,sex,other&#125; = user;</span><br><span class="line">console.log(nickname,age,sex,other);</span><br><span class="line">//七哥 21 男 &#123;country: &quot;Indonesia&quot;, identity: &quot;rapper&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.解构other里的属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let &#123;name,other:&#123;identity&#125;&#125; = user;</span><br><span class="line">console.log(name,identity);//Rich Brain rapper</span><br></pre></td></tr></table></figure>
+
+<h4 id="数组解构"><a href="#数组解构" class="headerlink" title="数组解构"></a>数组解构</h4><p>数组解构与对象解构类似</p>
+<p>1.解构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const numbers = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;];</span><br><span class="line">const [n1, n2] = numbers;</span><br><span class="line">console.log(n1, n2);//a b</span><br></pre></td></tr></table></figure>
+
+<p>2.解构数组中的数组</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 得到numbers下标为4的数组中的下标为2的数据，放到变量n中</span><br><span class="line">const numbers = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, [1, 2, 3, 4]];</span><br><span class="line">const [, , , , [, , n]] = numbers;</span><br><span class="line">console.log(n);//3</span><br></pre></td></tr></table></figure>
+
+<p>3.给数组某个索引位添加默认值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const numbers = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;];</span><br><span class="line">const [n1, , , n4, n5 = 123] = numbers;</span><br><span class="line">console.log(n1, n4, n5);//a b 123const numbers = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;];</span><br><span class="line">const [n1, , , n4, n5 = 123] = numbers;</span><br><span class="line">console.log(n1, n4, n5);//a b 123</span><br></pre></td></tr></table></figure>
+
+<p>4.解构数组里的某几个值，然后剩余值放到新的数组里</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const numbers = [324, 7, 23, 5, 3243];</span><br><span class="line">// 得到数组前两项，分别放到变量a和b中，然后剩余的所有数据放到数组nums</span><br><span class="line">const [a, b, ...nums] = numbers;</span><br><span class="line">// const a = numbers[0], b = numbers[1], nums = numbers.slice(2);//以前的写法</span><br><span class="line">console.log(a, b, nums);//324 7 (3) [23, 5, 3243]</span><br></pre></td></tr></table></figure>
+
+<p>5.解构数组里的对象</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const numbers = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: 2</span><br><span class="line">&#125;];</span><br><span class="line">//得到numbers下标为4的数组的属性a，赋值给变量A</span><br><span class="line">const [, , , , &#123; a: A &#125;] = numbers;//方法1</span><br><span class="line">const &#123; a: A &#125; = numbers[4];//方法2</span><br><span class="line">console.log(A)//1</span><br></pre></td></tr></table></figure>
+
+<p>6.解构对象里的某个属性，然后剩余属性放到新的对象里<br>///</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let &#123;name,...obj&#125; = user;</span><br><span class="line">console.log(name,obj);//Rich Brain &#123;age: 21, sex: &quot;男&quot;, other: &#123;…&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7.交换值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let a = 1, b = 2;</span><br><span class="line">[b, a] = [a, b]</span><br><span class="line">console.log(a, b);//2 1</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="参数解构"><a href="#参数解构" class="headerlink" title="参数解构"></a>参数解构</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//之前的写法</span><br><span class="line">// function print(user) &#123;</span><br><span class="line">//     console.log(`姓名：$&#123;user.name&#125;`)</span><br><span class="line">//     console.log(`年龄：$&#123;user.age&#125;`)</span><br><span class="line">//     console.log(`性别：$&#123;user.sex&#125;`)</span><br><span class="line">//     console.log(`国家：$&#123;user.other.country&#125;`)</span><br><span class="line">//     console.log(`身份：$&#123;user.other.identity&#125;`)</span><br><span class="line">// &#125;</span><br><span class="line">function print(&#123; name, age, sex, other: &#123;</span><br><span class="line">     country,</span><br><span class="line">     identity</span><br><span class="line">&#125; &#125;) &#123;</span><br><span class="line">     console.log(`姓名：$&#123;name&#125;`)</span><br><span class="line">     console.log(`年龄：$&#123;age&#125;`)</span><br><span class="line">     console.log(`性别：$&#123;sex&#125;`)</span><br><span class="line">     console.log(`国家：$&#123;country&#125;`)</span><br><span class="line">     console.log(`身份：$&#123;identity&#125;`)</span><br><span class="line">     &#125;</span><br><span class="line">print(user);//记得把要解构的对象传进去</span><br></pre></td></tr></table></figure>
+
+
+
+<p>此方法可用于ajax</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2951169/1609295351614-6440dad3-255a-4990-9271-55c4e28a5b8b.png" alt="image.png"></p>
+<h4 id="普通符号"><a href="#普通符号" class="headerlink" title="普通符号"></a>普通符号</h4><p>符号是ES6新增的一个数据类型，它通过使用函数 <code>Symbol(符号描述)</code> 来创建</p>
+<p>符号设计的初衷，是为了给对象设置私有属性</p>
+<p>私有属性：只能在对象内部使用，外面无法使用</p>
+<p><strong>符号具有以下特点</strong>：</p>
+<p>- 没有字面量</p>
+<p>- 使用 typeof 得到的类型是 symbol</p>
+<p>- 每次调用 Symbol 函数得到的符号永远不相等，无论符号名是否相同</p>
+<p>- 符号可以作为对象的属性名存在，这种属性称之为符号属性</p>
+<p>  - 开发者可以通过精心的设计，让这些属性无法通过常规方式被外界访问</p>
+<p>  - 符号属性是不能枚举的，因此在 for-in 循环中无法读取到符号属性，Object.keys 方法也无法读取到符号属性</p>
+<p>  - Object.getOwnPropertyNames 尽管可以得到所有无法枚举的属性，但是仍然无法读取到符号属性</p>
+<p>  - ES6 新增 Object.getOwnPropertySymbols 方法，可以读取符号</p>
+<p>- 符号无法被隐式转换，因此不能被用于数学运算、字符串拼接或其他隐式转换的场景，但符号可以显式的转换为字符串，通过 String 构造函数进行转换即可，console.log 之所以可以输出符号，是它在内部进行了显式转换。</p>
+<h4 id="共享符号"><a href="#共享符号" class="headerlink" title="共享符号"></a>共享符号</h4><p>根据某个符号名称（符号描述）能够得到同一个符号</p>
+<p><code>Symbol.for</code>(“符号名/符号描述”)  //获取共享符号**<br>**</p>
+
+      </div>
+    
+  </div>
+
+</article>
+
+<button class="assist-btn2 circle" id="assist_btn2" title="点亮屏幕" style="left: 27px; top: 152px;">
+  <i class="iconfont" style="display:inline-block;color:red;width:20px;height:20px;">&#xe61d;</i>
+</button>
+<button class="assist-btn1 circle" id="assist_btn1" title="关闭屏幕亮度" style="left: 27px; top: 152px;">
+  <i class="iconfont toc-title" style="display:inline-block;color:red;width:20px;height:20px;">&#xe61d;</i>
+</button>
+
+
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>	
+
+
+<!-- 微信公众号引流 openwrite.cn -->
+<!-- 
+<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+<script>
+  const btw = new BTWPlugin();
+  btw.init({
+    id: "container",
+    blogId: "",
+    name: "前端之旅",
+    qrcode: "https://poetries1.gitee.io/img-repo/2020/06/qrcode.jpg",
+    keyword: "3a3b3c",
+  });
+</script> -->
+
+<script type="text/javascript">
+
+// white theme
+var body = {color: "#555", background: "#000"};
+var a_tag = {color: "#222"};
+var header = { background: "#222"};
+var logo_line_i = {background: "#222"};
+// var post_code = {background: "#eee", color: "#222"};
+
+function switch_theme() {
+ $("body").css(body);
+ $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+ $(".header, .footer").css(header);
+ $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+ //$(".post code").css(post_code);
+ $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+ $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+ 
+ // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+ //$("#assist_btn1").hide(1500);
+}
+
+$(function () {
+$("#assist_btn2").css("display","none");
+ $("#assist_btn1").click(function() {
+     switch_theme();
+$("div#toc.toc-article").css({
+ "background":"#eaeaea",
+ "opacity":1
+});
+$(".toc-article ol").show();
+$("#toc.toc-article .toc-title").css("color","#a98602");
+$("#assist_btn1").css("display","none");
+$("#assist_btn2").css("display","block");
+ });
+$("#assist_btn2").click(function() {
+$("#assist_btn2").css("display","none");
+$("#assist_btn1").css("display","block");
+$("body").css("background","url(http://www.miaov.com/static/ie/images/news/bg.png)")
+     $(".header, .footer").css("background","url(http://www.miaov.com/static/ie/images/news/bg.png)")
+$(".toc-article ol").toggle(1000);
+ });
+});
+
+
+//背景随机
+
+var Y, O, E, L, B, C, T, z, N, S, A, I;
+!function() {
+var e = function() {
+for (O.clearRect(0, 0, L, B), T = [{
+x: 0,
+y: .7 * B + C
+}, {
+x: 0,
+y: .7 * B - C
+}]; T[1].x < L + C;) t(T[0], T[1])
+}, t = function(e, t) {
+O.beginPath(), O.moveTo(e.x, e.y), O.lineTo(t.x, t.y);
+var n = t.x + (2 * I() - .25) * C,
+ r = a(t.y);
+O.lineTo(n, r), O.closePath(), N -= S / -50, O.fillStyle = "#" + (127 * A(N) + 128 << 16 | 127 * A(N + S / 3) + 128 << 8 | 127 * A(N + S / 3 * 2) + 128).toString(16), O.fill(), T[0] = T[1], T[1] = {
+ x: n,
+ y: r
+}
+}, a = function n(e) {
+var t = e + (2 * I() - 1.1) * C;
+return t > B || t < 0 ? n(e) : t
+};
+Y = document.getElementById("evanyou"), O = Y.getContext("2d"), E = window.devicePixelRatio || 1, L = window.innerWidth, B = window.innerHeight, C = 90, z = Math, N = 0, S = 2 * z.PI, A = z.cos, I = z.random, Y.width = L * E, Y.height = B * E, O.scale(E, E), O.globalAlpha = .6, document.onclick = e, document.ontouchstart = e, e()
+}()
+
+   
+$("#toc-eye").click(function(){
+$("#toc.toc-article").toggle(1000);
+});
+
+</script>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持一下huaideabcd</div>
+        <ul>
+        
+          <li class="item">
+            
+              <span>微信扫一扫</span>
+            
+            <img src="/images/weixin.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            
+              <span>支付宝扫一扫</span>
+            
+            <img src="/images/zhifubao.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2022/05/20/aaa/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/categories/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tags/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <div id="comment" class="vcomment" ></div>
+    <script>
+        var notify = 'false' == true ? true : false;
+        var verify = 'false' == true ? true : false;
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+            return GUEST_INFO.indexOf(item) > -1
+        });
+        guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+        window.valine = new Valine({
+            el: '.vcomment',
+            notify: notify,
+            verify: verify,
+            appId: "nkvLdnK5xBRTBnMkXqpCq3Ie-gzGzoHsz",
+            appKey: "r2K6NaTBu6ebcvjzHlNUFKWR",
+            avatar:'mm',
+            placeholder: "有什么问题，欢迎留言指正与交流...",
+            guest_info:guest_info,
+            pageSize:'10'
+        });
+    </script>
+  
+    
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/clicklove.js"></script>
+
+  <!-- 爆炸红心效果 -->
+  <!-- <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+  <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+  <script type="text/javascript" src="/js/firework.js"></script> -->
+ 
+  
+</body>
+</html>
